@@ -14,10 +14,13 @@ class CreateProductSkusTable extends Migration
     public function up()
     {
         Schema::create('product_skus', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('product_id');
-            $table->string('sku')->unique();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('sku');
             $table->integer('price');
+            $table->integer('stock');
         });
     }
 

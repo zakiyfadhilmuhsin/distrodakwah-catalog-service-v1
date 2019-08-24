@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOptionsTable extends Migration
+class CreateSkuValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('sku_values', function (Blueprint $table) {
+            $table->integer('sku_id');
             $table->integer('product_id');
-            $table->string('option_name');
+            $table->integer('option_id');
+            $table->integer('value_id');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('sku_values');
     }
 }

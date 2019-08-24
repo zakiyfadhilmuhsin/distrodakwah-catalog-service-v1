@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateOptionValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('option_values', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
-            $table->string('product_name');
-            $table->string('product_desc');
-            $table->timestamps();
+            $table->string('value_name');
+            $table->bigInteger('option_id')->unsigned();
+            $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('option_values');
     }
 }

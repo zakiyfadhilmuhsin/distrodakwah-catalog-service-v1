@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkuValuesTable extends Migration
+class CreateBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSkuValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sku_values', function (Blueprint $table) {
-            $table->integer('id');
-            $table->integer('product_id');
-            $table->integer('option_id');
-            $table->integer('value_id');
+        Schema::create('brands', function (Blueprint $table) {
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id');
+            $table->string('brand_name');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateSkuValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sku_values');
+        Schema::dropIfExists('brands');
     }
 }

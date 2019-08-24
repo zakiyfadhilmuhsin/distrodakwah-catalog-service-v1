@@ -4,16 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OptionValue extends Model
+class Brands extends Model
 {
-    protected $table = "option_values";
+    // use Authenticatable, Authorizable;
+
+    protected $table = 'brands';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'product_id', 'option_id', 'value_name',
+        'brand_name'
     ];
 
     /**
@@ -22,10 +25,5 @@ class OptionValue extends Model
      * @var array
      */
     protected $hidden = [];
-
-    public function sku_value()
-    {
-        return $this->hasMany('App\SkuValue');
-    }
 
 }

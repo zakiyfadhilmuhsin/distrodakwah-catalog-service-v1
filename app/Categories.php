@@ -4,16 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Categories extends Model
 {
-    protected $table = "products";
+    // use Authenticatable, Authorizable;
+
+    protected $table = 'categories';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'products_name', 'products_desc',
+        'category_name'
     ];
 
     /**
@@ -22,10 +25,5 @@ class Product extends Model
      * @var array
      */
     protected $hidden = [];
-
-    public function sku_value()
-    {
-        return $this->hasMany('App\SkuValue');
-    }
 
 }

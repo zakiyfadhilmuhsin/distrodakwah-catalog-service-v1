@@ -3,18 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Student extends Model
+class SkuValues extends Model
 {
-    use SoftDeletes;
+    protected $table = 'sku_values';
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nama', 'alamat',
+        'sku_id', 'product_id', 'option_id', 'value_id'
     ];
 
     /**
@@ -24,5 +25,4 @@ class Student extends Model
      */
     protected $hidden = [];
 
-    protected $dates = ['deleted_at'];
 }
